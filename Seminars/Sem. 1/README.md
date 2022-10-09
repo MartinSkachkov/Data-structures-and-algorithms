@@ -100,3 +100,5 @@ int main() {
 * https://www.youtube.com/watch?v=8syQKTdgdzc
 * https://www.youtube.com/watch?v=v1SYihb4rcw
 * https://www.youtube.com/watch?v=xLetJpcjHS0&list=PLBlnK6fEyqRj9lld8sWIUNwlKfdUoPd1Y
+* https://www.youtube.com/watch?v=bxgTDN9c6rg
+* https://www.youtube.com/watch?v=__vX2sjlpXU
