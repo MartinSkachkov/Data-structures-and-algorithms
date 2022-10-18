@@ -15,7 +15,7 @@ std::string erase(const std::string &str) {
             s.push(str[i]);
         }
     }
-    std::string res(s.size() + 1, '\0');
+    std::string res(s.size() + 1, '\0'); // creates a string with <size>, <values>
     size_t indx = s.size() - 1;
 
     while (!s.empty()) {
