@@ -140,7 +140,7 @@ RStack<T> &RStack<T>::operator=(RStack<T> &&stack) {
     }
     eraseStack();        // deallocate the current storage
     arr = stack.arr;     // steal the pointer
-    stack.arr = nullptr; // null out the stack obj
+    stack.arr = nullptr; // null out the stack ptr
     topIndex = stack.topIndex;
     capacity = stack.capacity;
     std::cout << "Move operator=\n";
