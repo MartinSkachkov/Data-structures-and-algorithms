@@ -17,7 +17,6 @@ void generateBinaries2(unsigned int n) {
 
 void generateBinaries(unsigned int n) {
     std::queue<std::string> q;
-
     q.push("1");
 
     while (n) {

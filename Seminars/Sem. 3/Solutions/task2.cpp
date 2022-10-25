@@ -67,6 +67,7 @@ private:
 
             int x = currPos.first.first;
             int y = currPos.first.second;
+            std::cout << "Info: (" << x << ", " << y << ") moves - " << currPos.second << '\n';
             int moves = currPos.second + 1;
 
             pushAndMarkIfValid(q, {x + 1, y + 2}, moves);

@@ -6,11 +6,11 @@ void printStack(std::stack<int> s) {
         return;
     }
 
-    int x = s.top();
-    s.pop();
-    printStack(s);
-    std::cout << x << '\n';
-    s.push(x);
+    int x = s.top();        // get the last element
+    s.pop();                // pop the last element to reach the next one
+    printStack(s);          // recursively get the second element
+    std::cout << x << '\n'; // when finished print it
+    s.push(x);              // push it again as you previously popped it
 }
 
 std::stack<int> sortStack(std::stack<int> &input) {
