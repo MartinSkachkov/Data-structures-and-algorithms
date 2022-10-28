@@ -22,6 +22,7 @@ public:
     RStack(RStack<T> &&other);
     RStack<T> &operator=(const RStack<T> &other);
     RStack<T> &operator=(RStack<T> &&other);
+    ~RStack();
 
     bool empty() const;
     bool full() const;

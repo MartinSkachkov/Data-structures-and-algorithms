@@ -63,8 +63,8 @@ RStack<T> &RStack<T>::operator=(const RStack<T> &other) {
 
 template <typename T>
 RStack<T> &RStack<T>::operator=(RStack<T> &&other) {
-    if (this == &other) {
-        return *this;
+    if (this == &other) { // self assignment
+        return *this;     // if they are the same object return the actual object
     }
     free();
     mTopIndex = other.mTopIndex;
@@ -72,6 +72,11 @@ RStack<T> &RStack<T>::operator=(RStack<T> &&other) {
     mData = other.mData;   // steal the pointer
     other.mData = nullptr; // null out the stack ptr
     return *this;
+}
+
+template <typename T>
+RStack<T>::~RStack() {
+    free();
 }
 
 template <typename T>
