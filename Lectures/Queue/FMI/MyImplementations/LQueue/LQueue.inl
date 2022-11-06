@@ -3,6 +3,10 @@
 
 template <typename T>
 void LQueue<T>::copyQueue(const LQueue<T> &other) {
+    if (other.empty()) {
+        mHead = mTail = nullptr;
+    }
+
     QueueElement<T> *iter = other.mHead;
     while (iter) {
         push(iter->data);
@@ -65,10 +69,12 @@ LQueue<T>::~LQueue() {
 
 template <typename T>
 void LQueue<T>::push(const T &element) {
-    QueueElement<T> *newElem = new QueueElement<T>;
-    newElem->mData = element;
-    newElem->mNext = nullptr;
-    mTail->mNext = newElem;
+    QueueElement<T> *newElem = new QueueElement<T>{element, nullptr};
+    if (!empty()) {
+        mTail->mNext = newElem;
+    } else {
+        mHead = newElem;
+    }
     mTail = newElem;
     mSize++;
 }
@@ -80,13 +86,19 @@ void LQueue<T>::pop() {
     }
     QueueElement<T> *tmp = mHead;
     mHead = mHead->mNext;
+
+    // case when there is only one element in the queue
+    if (mHead == nullptr) {
+        mTail = nullptr;
+    }
+
     delete tmp;
     mSize--;
 }
 
 template <typename T>
 bool LQueue<T>::empty() const {
-    return mHead == nullptr;
+    return mHead == nullptr && mTail == nullptr;
 }
 
 template <typename T>
