@@ -28,6 +28,26 @@ void LStack<T>::copyStack(const LStack<T> &other) {
     }
 }
 
+/*
+// another way to copy
+template <typename T>
+void LStack<T>::copyStack(const LStack<T> &other) {
+    // case when the stack we want tp copy is empty
+    if (!other.mTopPtr) {
+        mTopPtr = nullptr;
+        return;
+    }
+    mTopPtr = new StackElement<T>{other.mTopPtr->data, nullptr};
+    StackElement<T> *nextToCopy = other.mTopPtr->next;
+    StackElement<T> *lastAdded = mTopPtr;
+
+    while (nextToCopy) {
+        lastAdded = lastAdded->next = new StackElement<T>{nextToCopy->data, nullptr};
+        nextToCopy = nextToCopy->next;
+    }
+}
+*/
+
 template <typename T>
 LStack<T>::LStack() : mTopPtr(nullptr) {}
 
