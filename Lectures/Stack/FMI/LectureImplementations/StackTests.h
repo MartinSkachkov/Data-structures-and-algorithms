@@ -1,5 +1,3 @@
-
-
 TEST_CASE("Default constructor creates empty stack") {
     IntStack s;
     CHECK(s.empty());
