@@ -54,6 +54,39 @@ Node<T> *find(Node<T> *head, T value) {
 }
 
 template <typename T>
+int getNumOfElemsInList(const Node<T> *head) {
+    int size = 0;
+    // case with 0 elems
+    if (head == nullptr) {
+        return size;
+    } else {
+        // case with 1 <= elems
+        while (head) {
+            size++;
+            head = head->mNext;
+        }
+    }
+    return size;
+}
+
+template <typename T>
+int improvedSearch(Node<T> *head, const T &value) {
+    int idx = 0;
+    Node<T> *previous = nullptr; // let's keep pointer of previous
+    for (Node<T> *cur = head; cur; cur = cur->mNext, idx++) {
+        if (cur->mData == value) {
+            if (!previous)
+                return idx;
+            std::swap(previous->mData, cur->mData);
+            return idx - 1;
+        }
+        previous = cur;
+    }
+
+    return -1;
+}
+
+template <typename T>
 void free(Node<T> *head) {
     Node<T> *tmp = nullptr;
     while (head) {
@@ -87,6 +120,11 @@ int main() {
     std::cout << find(newNode, 3);
     std::cout << '\n';
     std::cout << getNthElem(newNode, 2);
+    std::cout << getNumOfElemsInList(newNode);
+    improvedSearch(newNode, 3);
+    improvedSearch(newNode, 3);
+    std::cout << '\n';
+    printNodes(newNode);
     free(newNode);
     return 0;
 }
