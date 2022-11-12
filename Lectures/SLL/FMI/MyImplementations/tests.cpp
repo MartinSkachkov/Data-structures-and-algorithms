@@ -1,4 +1,4 @@
-#include "SLL.inl"
+#include "SLL.hpp"
 #include <iostream>
 
 int main() {
