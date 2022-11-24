@@ -9,7 +9,6 @@ struct LLNode {
 };
 
 template <typename T>
-
 void printLL(const LLNode<T> *ll) { // ll is a pointer to the front
     const LLNode<T> *iterator = ll; // create a copy to the front pointer
 
