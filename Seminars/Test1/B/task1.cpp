@@ -23,7 +23,7 @@ void print(Node<T> *list) {
 }
 
 template <typename T>
-void freeL(Node<T> *list) {
+void free(Node<T> *list) {
     while (list) {
         Node<T> *toDelete = list;
         list = list->next;
