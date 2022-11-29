@@ -1,4 +1,6 @@
+#include <assert.h>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -58,6 +60,29 @@ void free(Node<T> *node) {
     delete node;
 }
 
+// {2, 4, 7} {'L', 'L', 'R'}
+template <typename T>
+void createTree(vector<int> values, vector<char> path, Node<T> *node) {
+    assert(values.size() == path.size());
+    for (size_t i = 0; i < values.size(); i++) {
+        if (path[i] == 'L') {
+            if (node->left == nullptr) {
+                node->left = new Node<T>(values[i]);
+            } else {
+                assert(node->left->data == values[i]);
+                node = node->left;
+            }
+        } else {
+            if (node->right == nullptr) {
+                node->right = new Node<T>(values[i]);
+            } else {
+                assert(node->right->data == values[i]);
+                node = node->right;
+            }
+        }
+    }
+}
+
 int main() {
     // Create Nodes
     /* Node<int> *root = new Node<int>(1);
@@ -101,6 +126,14 @@ int main() {
     cout << endl;
     infx_print(plus);
 
+    Node<int> *root = new Node<int>(1);
+    createTree({2, 4, 7}, {'L', 'L', 'L'}, root);
+    createTree({2, 4, 8}, {'L', 'L', 'R'}, root);
+    createTree({2, 5, 9}, {'L', 'R', 'R'}, root);
+    createTree({3, 6, 10}, {'R', 'R', 'L'}, root);
+
+    infx_print(root);
+    free(root);
     // free the memory
     /* delete root;
      delete node2;
