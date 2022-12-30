@@ -25,6 +25,7 @@ public:
         Iterator(LLNode *ptr) : currentNode(ptr) {}
 
     public:
+        // ++it
         Iterator &operator++() {
             if (currentNode == nullptr) {
                 return *this;
@@ -33,6 +34,7 @@ public:
             return *this;
         }
 
+        // it++
         Iterator operator++(int) {
             Iterator tmp = *this;
             ++(*this);
@@ -51,7 +53,7 @@ public:
             return currentNode != other.currentNode;
         }
 
-        friend class LinkedList; // трябва ни за да миже когато правим итератор към началото или края да имаме достъп до конструктора на Iterator, който е в private секция
+        friend class LinkedList; // трябва ни за да мoже когато правим итератор към началото или края да имаме достъп до конструктора на Iterator, който е в private секция
     };
 
     class ConstIterator {
@@ -155,7 +157,7 @@ LinkedList<T>::LinkedList(LinkedList<T> &&other) {
 
 template <typename T>
 LinkedList<T> &LinkedList<T>::operator=(const LinkedList<T> &other) {
-    if (this == other) {
+    if (this == &other) {
         return *this;
     }
     free();
@@ -165,7 +167,7 @@ LinkedList<T> &LinkedList<T>::operator=(const LinkedList<T> &other) {
 
 template <typename T>
 LinkedList<T> &LinkedList<T>::operator=(LinkedList<T> &&other) {
-    if (this == other) {
+    if (this == &other) {
         return *this;
     }
     free();
@@ -174,7 +176,7 @@ LinkedList<T> &LinkedList<T>::operator=(LinkedList<T> &&other) {
     listSize = other.listSize;
 
     other.head = other.tail = nullptr;
-    listSize = 0;
+    other.listSize = 0;
 
     return *this;
 }
