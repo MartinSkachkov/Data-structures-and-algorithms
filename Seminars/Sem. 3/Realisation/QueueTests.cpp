@@ -1,6 +1,6 @@
-#include"Linked-Queue.hpp"
-#include<cassert>
-#include<iostream>
+#include "Linked-Queue.hpp"
+#include <cassert>
+#include <iostream>
 
 void runTest() {
     LinkedQueue<int> q;
