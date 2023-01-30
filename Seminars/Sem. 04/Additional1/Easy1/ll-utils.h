@@ -23,4 +23,5 @@ void print(const Node<T> *ll) {
         cout << ll->data << ' ';
         ll = ll->next;
     }
+    cout << '\n';
 }
