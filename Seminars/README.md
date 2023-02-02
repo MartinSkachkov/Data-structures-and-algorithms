@@ -4,3 +4,5 @@ Useful information, implementations, solution to tasks.
 [Stack](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2002)
 
 [Queue](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2003)
+
+[DLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2006)
