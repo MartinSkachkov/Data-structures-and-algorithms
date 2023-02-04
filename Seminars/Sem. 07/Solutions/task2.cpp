@@ -1,28 +1,32 @@
 #include "tree-utils.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 template <typename T>
-bool contains(const Tree<T> *tree, const T &elem) {
-    bool res = tree->data == elem;
-
-    if (tree->left != nullptr && !res) {
-        res = contains(tree->left, elem);
-    }
-    if (tree->right != nullptr && !res) {
-        res = contains(tree->right, elem);
+Tree<T> *buildFromVector(vector<T> &v, int start, int end) {
+    if (end < start) {
+        return nullptr;
     }
 
-    return res;
+    int mid = (end - start) / 2 + start;
+
+    return new Tree<T>(v[mid], buildFromVector(v, start, mid - 1), buildFromVector(v, mid + 1, end));
 }
 
 int main() {
-    Tree<int> *root = new Tree<int>(2, new Tree<int>(3), new Tree<int>(13, new Tree<int>(7), new Tree<int>(8)));
+    vector<int> v;
+    for (size_t i = 0; i < 8; i++) {
+        v.push_back(i);
+    }
 
-    cout << "Contains: " << boolalpha << contains(root, 7) << '\n';
-    cout << "Contains: " << boolalpha << contains(root, 69) << '\n';
-    printTree(root);
+    for (size_t i = 0; i < 8; i++) {
+        cout << v[i];
+    }
 
-    freeTree(root);
+    Tree<int> *t = buildFromVector(v, 0, v.size() - 1);
+    printTree(t);
+
+    freeTree(t);
     return 0;
 }

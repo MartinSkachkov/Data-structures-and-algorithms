@@ -1,35 +1,28 @@
-#include <algorithm>
-#include <cstdlib>
+#include "tree-utils.h"
 #include <iostream>
-#include <list>
 using namespace std;
 
-template <class T>
-void insertSorted(std::list<T> &ll, const T &elem) {
-    auto iter = ll.begin();
-    while (iter != ll.end()) {
-        if (*iter > elem) {
-            ll.insert(iter, elem);
-            break;
-        }
-        iter++;
+template <typename T>
+void insertBST(Tree<T> *&t, const T &elem) {
+    if (t == nullptr) {
+        t = new Tree<T>(elem);
+        return;
     }
-    if (iter == ll.end()) {
-        ll.push_back(elem);
+
+    if (t->data < elem) {
+        insertBST(t->right, elem);
+    }
+    if (t->data > elem) {
+        insertBST(t->left, elem);
     }
 }
 
 int main() {
-    list<int> ll;
-    srand(time(0));
+    Tree<int> *example = new Tree<int>(4, new Tree<int>(2), new Tree<int>(6));
+    printTree(example);
+    insertBST(example, 1);
+    printTree(example);
 
-    for (size_t i = 0; i < 5555; i++) {
-        insertSorted(ll, rand());
-    }
-
-    for (int x : ll) {
-        cout << x;
-    }
-    std::cout << is_sorted(ll.begin(), ll.end());
+    freeTree(example);
     return 0;
 }

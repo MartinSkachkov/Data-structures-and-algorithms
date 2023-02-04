@@ -1,58 +1,64 @@
-#include <iostream>
-using namespace std;
+#include "tree-utils.h"
+#include <cmath>
 
+// for regular binary trees
 template <typename T>
-struct Node {
-    T data;
-    Node<T> *next;
-};
+int max_elem(Tree<T> *tree) {
+    int res = tree->data;
 
-template <typename T>
-void print(const Node<T> *ll) {
-    while (ll) {
-        cout << ll->data << ' ';
+    if (tree->left != nullptr) {
+        res = std::max(res, max_elem(tree->left));
     }
-    cout << '\n';
+    if (tree->right != nullptr) {
+        res = std::max(res, max_elem(tree->right));
+    }
+
+    return res;
 }
 
 template <typename T>
-void free(Node<T> *ll) {
-    while (ll) {
-        Node<T> *toDelete = ll;
-        ll = ll->next;
-        delete toDelete;
+int min_elem(Tree<T> *tree) {
+    int res = tree->data;
+
+    if (tree->left != nullptr) {
+        res = std::min(res, min_elem(tree->left));
     }
+    if (tree->right != nullptr) {
+        res = std::min(res, min_elem(tree->right));
+    }
+
+    return res;
+}
+
+// for binary search trees
+template <typename T>
+int max_elem_bst(Tree<T> *tree) {
+    while (tree->right != NULL)
+        tree = tree->right;
+
+    return tree->data;
 }
 
 template <typename T>
-bool hasCycle(Node<T> *ll) {
-    Node<T> *fast = ll;
-    Node<T> *slow = ll;
+int min_elem_bst(Tree<T> *tree) {
+    while (tree->left != NULL)
+        tree = tree->left;
 
-    while (fast && fast->next && slow) {
-        fast = fast->next->next;
-        slow = slow->next;
-
-        if (fast == slow) {
-            return true;
-        }
-    }
-    return false;
+    return tree->data;
 }
 
 int main() {
-    Node<int> *last = new Node<int>{6, nullptr};
-    Node<int> *list = new Node<int>{1,
-                                    new Node<int>{2,
-                                                  new Node<int>{3,
-                                                                new Node<int>{4,
-                                                                              new Node<int>{5,
-                                                                                            last}}}}};
-    last->next = list->next->next;
+    Tree<int> *regularTree = new Tree<int>(2, new Tree<int>(3, new Tree<int>(4), new Tree<int>(5)), new Tree<int>(13, new Tree<int>(7), new Tree<int>(8)));
+    printTree(regularTree);
+    std::cout << "Maximum element in regular binary tree: " << max_elem(regularTree) << '\n';
+    std::cout << "Minimum element in regular binary tree: " << min_elem(regularTree) << '\n';
 
-    cout << hasCycle(list);
+    Tree<int> *binarySearchTree = new Tree<int>(8, new Tree<int>(3, new Tree<int>(1), new Tree<int>(6, new Tree<int>(4), new Tree<int>(7))), new Tree<int>(10, nullptr, new Tree<int>(14, new Tree<int>(13))));
+    printTree(binarySearchTree);
+    std::cout << "Maximum element in bs tree: " << max_elem_bst(binarySearchTree) << '\n';
+    std::cout << "Minimum element in bs tree: " << min_elem_bst(binarySearchTree) << '\n';
 
-    free(last);
-    free(list);
+    freeTree(regularTree);
+    freeTree(binarySearchTree);
     return 0;
 }
