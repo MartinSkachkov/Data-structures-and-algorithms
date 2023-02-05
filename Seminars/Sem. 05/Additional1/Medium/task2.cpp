@@ -1,20 +1,40 @@
-#include <iostream>
-#include <list>
-using namespace std;
+/*
+ * The idea is easy, but several test specail cases
+ * 1) Easy: no such node
+ * 2) Easy: same node
+ * 3) They are consecutive but 2 cases: first last or last first
+ */
+void swap_kth(int k) {
+    if (k > length)
+        return;
+    int kth_back = length - k + 1;
 
-void swapKNodes(list<int> &ll, int k) {
-    int kCopy = k;
-    list<int>::iterator first = ll.begin();
-    list<int>::iterator second = ll.end();
+    if (k == kth_back)
+        return; // same node
 
-    while (first != ll.end() && k != 1) {
-        first++;
-        k--;
+    if (k > kth_back)
+        swap(k, kth_back);
+
+    Node *first = get_nth(k);
+    Node *last = get_nth(kth_back);
+
+    Node *first_prev = first->prev;
+    Node *first_next = first->next;
+
+    Node *last_prev = last->prev;
+    Node *last_next = last->next;
+
+    if (k + 1 == kth_back) { // consecutive (neighbours)
+        link(first_prev, last);
+        link(last, first);
+        link(first, last_next);
+    } else {
+        link(first_prev, last);
+        link(last, first_next);
+
+        link(last_prev, first);
+        link(first, last_next);
     }
-
-    while (second != ll.begin() && k != 0) {
-        second--;
-        k--;
-    }
-    second--; // needs one more time to decrement because initially second was pointing to nullptr
+    if (k == 1)
+        swap(head, tail);
 }
