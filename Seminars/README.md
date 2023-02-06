@@ -1,10 +1,13 @@
 ##  Data Structures and Algorithms 2022/2023 Course at FMI Sofia University
 Useful information, implementations, solution to tasks.
-### Contents
-[Stack](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2002)
 
-[Queue](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2003)
+## Contents
+**[Complexity](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2001)**
 
-[SLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2004)
+**[Stack](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2002)**
 
-[DLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2005)
+**[Queue](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2003)**
+
+**[SLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2004)**
+
+**[DLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2005)**
