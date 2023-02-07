@@ -11,3 +11,5 @@ Useful information, implementations, solution to tasks.
 **[SLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2004)**
 
 **[DLL](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2005)**
+
+**[Intro to trees](https://github.com/MartinSkachkov/Data-structures-and-algorithms/tree/master/Seminars/Sem.%2006)**
