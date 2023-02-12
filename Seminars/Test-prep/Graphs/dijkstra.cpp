@@ -31,7 +31,7 @@ vector<int> dijkstra(vector<vector<pair<int, int>>> &graph, int start) {
 
             if (dist[currNeighbour] > dist[currV] + currWeight) {
                 dist[currNeighbour] = dist[currV] + currWeight;
-                q.push({dist[currV], currV});
+                q.push({currNeighbour, dist[currNeighbour]});
             }
         }
     }
